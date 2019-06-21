@@ -8,7 +8,7 @@ eps = 0.05
 
 def main(data):
     nn = NNet.NeuralNet(64, 56, 20)
-    nn.set_param(0.4, 0.3)
+    nn.set_param(0.8, 0.3)
     ev = eps + 1
     while( eps < ev ):
         nn.learn(data)
