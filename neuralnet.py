@@ -27,8 +27,9 @@ class NeuralNet:
 
     def weight_update(self, v):
         middle_vec = (v*sigmoid_d(self.yk))
-        delta__out = np.array( np.matrix(self.yj).T * middle_vec )
-        delta__mid = np.array( np.matrix(self.yi).T * (self.weight_out * middle_vec).dot(np.ones(20))  )
+        out_vec    = (self.weight_out * middle_vec).dot(np.ones(20)) * sigmoid_d(self.yj)
+        delta__out = np.array( np.matrix(self.yj).T * middle_vec)
+        delta__mid = np.array( np.matrix(self.yi).T * out_vec)
         
         self.delta_mid = self.eta * delta__mid + self.alpha * self.delta_mid
         self.delta_out = self.eta * delta__out + self.alpha * self.delta_out
